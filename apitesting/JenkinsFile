@@ -1,0 +1,27 @@
+pipeline { //indicate the job is written in Declarative Pipeline
+agent any //agent specifies where the pipeline will execute. 
+stages {
+   stage ("Download the katalon project"){
+     steps {
+         sh '''
+            cd $WORKSPACE
+            git init
+            git remote remove origin
+            git remote add origin https://github.com/VijjuDreamzz/finalprojectdemo.git
+            git pull origin master --allow-unrelated-histories
+            '''
+
+            }
+
+                                        }
+
+
+	stage('Download Artifacts') {
+	  steps {
+		 sh "automation.sh"			
+			}
+			
+		                        }
+		
+		}
+		}
